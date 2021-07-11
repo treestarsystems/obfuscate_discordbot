@@ -1,4 +1,3 @@
-
 {
  "name": "obfuscate_discordbot",
  "version": "1.0.0",
@@ -14,14 +13,14 @@
   "log-instance": "pm2 log"
  },
  "repository": {
-   "type": "git",
-   "url": "git+https://github.com/treestarsystems/obfuscate_discordbot.git"
+  "type": "git",
+  "url": "git+https://github.com/treestarsystems/obfuscate_discordbot.git"
  },
  "author": "Tree Star Systems",
  "license": "MIT",
  "private": true,
  "bugs": {
-   "url": "https://github.com/treestarsystems/obfuscate_discordbot/issues"
+  "url": "https://github.com/treestarsystems/obfuscate_discordbot/issues"
  },
  "homepage": "https://treestarsystems.com/",
  "dependencies": {
@@ -32,6 +31,7 @@
   "connect-mongo": "^3.2.0",
   "cors": "^2.8.5",
   "cron": "^1.8.2",
+  "discord.js": "^12.5.3",
   "express": "^4.17.0",
   "express-handlebars": "^3.1.0",
   "express-session": "^1.17.1",
@@ -45,4 +45,3 @@
   "nodemailer": "^6.4.17"
  }
 }
- 

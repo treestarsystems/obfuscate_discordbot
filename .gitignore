@@ -114,3 +114,6 @@ screenlog.0
 /trash
 /system_confs/system_vars.json
 /server/view/public/downloads
+
+#Sensitive conf info
+/server/core/config.json
