@@ -20,8 +20,6 @@ const handlebarsHelperFunctions = require('./view/handlebars/helpers.js');
 const routes = require('./controller/routes.js');
 
 //Main connection to DB
-//Chnage DB string to a variable later
-
 mongoose.connect(
   core.coreVars.dbServer,
   {useNewUrlParser: true,useUnifiedTopology: true}
@@ -93,10 +91,6 @@ if (!fs.existsSync(core.coreVars.installedDir)){
 if (!fs.existsSync(core.coreVars.dbStoreDir)){
  console.log(`Creating: ${core.coreVars.dbStoreDir}`);
  core.createDir (core.coreVars.dbStoreDir);
-}
-if (!fs.existsSync(core.coreVars.downloadDir)){
- console.log(`Creating: ${core.coreVars.downloadDir}`);
- core.createDir (core.coreVars.downloadDir);
 }
 
 function startApp () {

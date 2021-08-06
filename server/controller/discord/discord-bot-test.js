@@ -37,6 +37,15 @@ function channelObfuscate (message) {
  if (message.content.includes(`!help`)) {
   message.channel.send(`<@!${message.author.id}> h0w M@y I h3Lp U$3?`);
  }
+ if (message.content == '!news') {
+  message.channel.send(`https://cointelegraph.com/news/oscar-mayer-auctions-one-off-pack-of-hot-doge-wieners`);
+ }
+}
+
+function channelFinance (message) {
+ if (message.content == '!news') {
+  message.channel.send(`https://cointelegraph.com/news/oscar-mayer-auctions-one-off-pack-of-hot-doge-wieners`);
+ }
 }
 
 function channelDM (message) {
