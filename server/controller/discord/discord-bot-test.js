@@ -1,7 +1,9 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = require('../../core/config.json');
+var parse = require('feed-reader').parse;
 let appInfo;
+
 
 const exampleEmbed = new Discord.MessageEmbed()
  .setTitle('Young Grizzly on YouTube')
@@ -9,6 +11,13 @@ const exampleEmbed = new Discord.MessageEmbed()
 
 client.once('ready', () => {
  console.log('Obfuscate Bot is Ready!');
+ //Source: https://www.devdungeon.com/content/javascript-discord-bot-tutorial
+ let channels = client.channels.cache;
+ //Source: https://stackoverflow.com/a/54550693
+ for (const [key, value] of channels.entries()) {
+//  if (value.name.includes('finance')) channelFinance(value);
+console.log(client.channels.resolveId(client.channels.resolve(value)))
+ }
 });
 
 client.login(token.discordToken);
@@ -37,16 +46,26 @@ function channelObfuscate (message) {
  if (message.content.includes(`!help`)) {
   message.channel.send(`<@!${message.author.id}> h0w M@y I h3Lp U$3?`);
  }
- if (message.content == '!news') {
-  message.channel.send(`https://cointelegraph.com/news/oscar-mayer-auctions-one-off-pack-of-hot-doge-wieners`);
- }
 }
 
-function channelFinance (message) {
- if (message.content == '!news') {
-  message.channel.send(`https://cointelegraph.com/news/oscar-mayer-auctions-one-off-pack-of-hot-doge-wieners`);
- }
+async function channelFinance (channelObj) {
+ let url = 'https://cointelegraph.com/rss';
+ setInterval(() => {
+  client.channels.fetch(channelObj.id).then(channel => {
+   parse(url).then((feed) => {
+    feed.entries.forEach((e,i) => {
+     if (i == 0) channel.send(e.link);
+    });
+   }).catch((err) => {
+     console.log(err);
+   }).finally(() => {
+   //  console.log('Everything done');
+   });
+  });
+ },5000);
 }
+
+//channelFinance();
 
 function channelDM (message) {
  if (message.content == '!portfolio') {
@@ -90,6 +109,11 @@ client.on('message', async (message) => {
  if (message.channel.name == 'obfuscate') {
   channelObfuscate(message);
  }
+/*
+ if (message.channel.name == 'finance') {
+  channelFinance(message);
+ }
+*/
  if (message.channel.type == 'dm') {
   channelDM(message);
  }

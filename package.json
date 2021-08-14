@@ -7,10 +7,10 @@
   "start": "pm2 start system_confs/ecosystem.config.js --env prod",
   "dev": "pm2 start system_confs/ecosystem.config.js --env dev",
   "stop-instance": "server/service.js -k",
-  "status-instance": "pm2 status",
+  "status-instance": "server/service.js -s",
   "delete-instance": "server/service.js -d",
-  "restart-instance": "server/service.js -r",
-  "log-instance": "pm2 log"
+  "reload-instance": "server/service.js -r",
+  "log-instance": "pm2 log obfuscate_discordbot"
  },
  "repository": {
   "type": "git",
